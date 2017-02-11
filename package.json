@@ -8,6 +8,7 @@
     "start": "gulp start:server",
     "compile:server": "gulp compile:server",
     "build:client": "ng build",
+	"watch:client":"gulp watch:client",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

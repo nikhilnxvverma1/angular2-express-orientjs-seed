@@ -44,4 +44,6 @@ gulp.task('info',function(){
 	console.log("If this is the very first run, expect a delay in the page load (because .ts files haven't transpiled yet)");
 });
 
+gulp.task('watch:client',shell.task('ng build -o dist -w'));
+
 gulp.task('default',['start:server']);
