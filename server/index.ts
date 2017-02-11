@@ -1,25 +1,24 @@
 import {ServerApp} from './server-app'
-// import { DatabaseConnection } from './database-connection';
-import orientjs= require('orientjs');
+import { connectToDatabase,DatabaseOptions } from './database-connection';
+import ojs= require('orientjs');
 import winston=require('winston');
 
 winston.level='debug';
 
 winston.debug("Initializing Server");
 
-let server=new ServerApp(null);
-server.setRoutes();
-server.start();
+let databaseOptions=new DatabaseOptions();
+databaseOptions.username="root";
+databaseOptions.password="root";
+databaseOptions.name="sanity";
+//change or add more options as needed
 
-// var afterDbIsConnected=function(err:Error,db:orientjs.Db){
-
-// 	//create server giving it the DB instance 
-// 	var serverApp = new ServerApp(db);
-
-// 	//fire up the server
-// 	serverApp.setRoutes();
-// 	serverApp.startServer();
-// }
-
-// //TODO get credentials from env. This is only for dev purposes.
-// new DatabaseConnection("root","root","sanity",afterDbIsConnected);
+connectToDatabase(databaseOptions).
+then((db:ojs.Db)=>{
+	winston.info("Databse connection established, starting server")
+	let server=new ServerApp(db);
+	server.setRoutes();
+	server.start();
+}).catch((error:Error)=>{
+	winston.error("Problems connecting to the database:"+error.message);
+});
