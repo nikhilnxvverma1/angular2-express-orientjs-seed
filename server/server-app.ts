@@ -10,7 +10,7 @@ export class ServerApp {
 	private app: express.Application;
 	private db:orientjs.Db;
     
-	constructor(db:orientjs.Db) {
+	constructor(db?:orientjs.Db) {
 		this.app = express();
 		this.db=db;
 	}
