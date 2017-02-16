@@ -38,6 +38,11 @@ gulp.task('clean:server',shell.task('rm server/*.js'));
 
 //server: transpiles typescript, watches ts files and launches the server
 gulp.task('execute:server',shell.task('node server/index.js'));
+gulp.task('debug:server',shell.task('node --debug-brk=5858 server/index.js'));
+
+// process.env.NODE_ENV=='production' ?
+// 		shell.task('node server/index.js'):
+// 		shell.task('node --debug-brk=5858 server/index.js')
 gulp.task('start:server',['compile:server','watch:server','execute:server']);
 
 gulp.task('info',function(){	
