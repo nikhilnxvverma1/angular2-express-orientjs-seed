@@ -3,6 +3,8 @@
 This is a seed project for anyone looking for a nice and quick Angular 2 - Express setup in typescript. Optionally, you can also use [OrientDB](http://orientdb.com/orientdb/), a nice graph database, 
 at the backend for storage.
 
+**Note**: Make sure your node version >=6.9.0 and npm version >=3
+
 ## Libraries and Frameworks incorporated:
 1. Angular2 
 2. Express
@@ -19,7 +21,7 @@ Additionally, there is also a handy _.vscode/launch.json_ file that makes it muc
 3. npm run build:client
 4. npm run compile:server
 5. npm start
-6. npm watch:client
+6. npm run watch:client (in a separate window)
 
 *Want to use the database? Go to *server/server.ts* and set the flag called _iWantToUseADatabase_. By default, it will most likely will be false.
 
